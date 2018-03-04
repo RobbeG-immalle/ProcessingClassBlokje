@@ -8,7 +8,7 @@ class Blokje {
   
   int xRichting = 1;
   int yRichting = 1;
-  
+ 
   Blokje(int x, int y, int hoogte, int breedte) 
    {
     b = breedte;
@@ -18,16 +18,20 @@ class Blokje {
     this.x = x;
     this.y = y;
    }
-    void draw() 
+   void draw() 
    {
     rect(x, y, b, h);
    }
-     void update()
+   void update()
    {
     x += xRichting;
     y += yRichting;
    }
-    void grow ()
+  void kleurVeranderen()
+    {
+      fill(x,y,random(0,255));
+    }
+  void grow ()
    {
       b += 1;
       h += 1;
@@ -37,12 +41,14 @@ class Blokje {
       b = oBreedte;
       h = oHoogte;
   }
-  void onder() {
+  void onder()
+  {
     xRichting = 0;
     yRichting = 1;
   }
   
-  void links() {
+  void links()
+  {
     xRichting = -1;
     yRichting = 0;
   }
@@ -52,12 +58,12 @@ class Blokje {
     xRichting = 1;
     yRichting = 0;
   }
- void boven() 
+  void boven() 
   {
     xRichting = 0;
     yRichting = -1;
   }
- void goManual(int xRichting, int yRichting) 
+  void goManual(int xRichting, int yRichting) 
   {
     this.xRichting = xRichting;
     this.yRichting = yRichting;

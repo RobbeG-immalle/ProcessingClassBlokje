@@ -1,4 +1,4 @@
-Blokje b1 = new Blokje(10,10,10,10);
+Blokje b1 = new Blokje(20,50,10,10);
 Blokje b2 = new Blokje(20,20,10,10);
 void setup()
 {
@@ -7,13 +7,16 @@ void setup()
 }
 void draw()
 {
+  clear();
   background(200);
   b1.draw();
   b2.draw();
   
+  
   if(mousePressed && mouseButton == LEFT) {
     b1.update();
     b2.update();
+    b1.kleurVeranderen();
   }
   if(mousePressed && mouseButton == RIGHT) {
     b1.grow();
