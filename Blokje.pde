@@ -1,25 +1,65 @@
-class Blokje
-{
-  float xpos,ypos,hoogte,breedte;
-  Blokje(float y,float x, float h, float w)
+class Blokje {
+  int oBreedte;
+  int oHoogte;
+  int b;
+  int h;
+  int x;
+  int y;
+  
+  int xRichting = 1;
+  int yRichting = 1;
+  
+  Blokje(int x, int y, int hoogte, int breedte) 
+   {
+    b = breedte;
+    h = hoogte;
+    oBreedte = b;
+    oHoogte = h;
+    this.x = x;
+    this.y = y;
+   }
+    void draw() 
+   {
+    rect(x, y, b, h);
+   }
+     void update()
+   {
+    x += xRichting;
+    y += yRichting;
+   }
+    void grow ()
+   {
+      b += 1;
+      h += 1;
+   }
+    void resetSize() 
   {
-     xpos = x;
-     ypos = y;
-     hoogte = h;
-     breedte = w;
-  }  
-     void Update()
-  {
-    if(mousePressed == true && mouseButton == LEFT)
-  {
-    xpos += 1;
-    ypos += 1;
+      b = oBreedte;
+      h = oHoogte;
   }
-  if(mousePressed == true && mouseButton == RIGHT)
-  {
-    hoogte += 1;
-    breedte += 1;
+  void onder() {
+    xRichting = 0;
+    yRichting = 1;
   }
-  rect(xpos,ypos,hoogte,breedte);
+  
+  void links() {
+    xRichting = -1;
+    yRichting = 0;
+  }
+  
+  void rechts() 
+  {
+    xRichting = 1;
+    yRichting = 0;
+  }
+ void boven() 
+  {
+    xRichting = 0;
+    yRichting = -1;
+  }
+ void goManual(int xRichting, int yRichting) 
+  {
+    this.xRichting = xRichting;
+    this.yRichting = yRichting;
   }
 }

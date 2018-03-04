@@ -7,8 +7,54 @@ void setup()
 }
 void draw()
 {
-  clear();
-  background(204);
-  b1.Update();
-  b2.Update();
-}
+  background(200);
+  b1.draw();
+  b2.draw();
+  
+  if(mousePressed && mouseButton == LEFT) {
+    b1.update();
+    b2.update();
+  }
+  if(mousePressed && mouseButton == RIGHT) {
+    b1.grow();
+    b2.grow();
+  }
+    if(keyPressed && key == 'r') {
+     b1.resetSize();
+     b2.resetSize();
+     print("size reset\n");
+    }
+   if(keyPressed && key == CODED) {
+    switch(keyCode) {
+      
+      case UP:
+        println("naar boven\n");
+        b1.boven();
+        b2.boven();
+        break;
+      
+      case DOWN:
+        println("naar rechts\n");
+        b1.onder();
+        b2.onder();
+        break;
+      
+      case LEFT:
+        println("Naar links\n");
+        b1.links();
+        b2.links();
+        break;
+      
+      case RIGHT:
+        println("naar onder\n");
+        b1.rechts();
+        b2.rechts();
+        break;
+      
+      default:  
+        b1.goManual(1, 1);
+        b2.goManual(1, 1);
+        break;
+    }
+   }
+  }
